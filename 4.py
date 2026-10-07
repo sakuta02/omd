@@ -9,16 +9,18 @@ days = [
     {"day": "пт", "orders": 30, "revenue": 48_000, "returns": 3},
 ]
 
-df = pd.DataFrame(days)
-df = df.set_index('day')
+if __name__ == '__main__':
+    df = pd.DataFrame(days)
+    df = df.set_index('day')
 
-a1 = df.revenue.sum()
-a2 = df.loc[df.revenue.idxmax()].name
-a3 = df.revenue / df.orders
-a3.index = df.index
-a4 = ' '.join(df[df.returns / df.orders > 0.2].index)
+    a1 = df.revenue.sum()
+    a2 = df.loc[df.revenue.idxmax()].name
+    a3 = df.revenue / df.orders
+    a3.index = df.index
+    a4 = ' '.join(df[df.returns / df.orders > 0.2].index)
 
-print(a1, a2, a3, a4, sep='\n')
+    print(a1, a2, a3, a4, sep='\n')
+
 # 174200
 # ср
 # day

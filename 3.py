@@ -9,15 +9,14 @@ orders = [
     {"id": 6, "buyer": "gleb", "status": "returned", "amount": 2_100},
 ]
 
+if __name__ == '__main__':
+    df = pd.DataFrame(orders)
+    a1 = df[df['status'] == 'returned'].amount.sum()
+    a2 = ' '.join(df[df['status'] == 'returned'].buyer.unique())
+    a3 = len(df[df['status'] == 'delivered'])
+    a4 = df[df['status'] == 'delivered'].amount.mean()
+    print(a1, a2, a3, a4, sep='\n')
 
-df = pd.DataFrame(orders)
-a1 = df[df['status'] == 'returned'].amount.sum()
-a2 = ' '.join(df[df['status'] == 'returned'].buyer.unique())
-a3 = len(df[df['status'] == 'delivered'])
-a4 = df[df['status'] == 'delivered'].amount.mean()
-
-
-print(a1, a2, a3, a4, sep='\n')
 # 6600
 # boris gleb
 # 4

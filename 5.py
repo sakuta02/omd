@@ -14,17 +14,19 @@ reviews = [
     {"id": 5, "product": "Кабель", "stars": 1},
 ]
 
-df = pd.DataFrame(reviews)
-df['product'] = df['product'].str.lower()
+if __name__ == '__main__':
+    df = pd.DataFrame(reviews)
+    df['product'] = df['product'].str.lower()
 
-stats = df.groupby('product').stars.agg(['mean', 'count'])
+    stats = df.groupby('product').stars.agg(['mean', 'count'])
 
-a1 = stats['mean']
-a2 = stats.loc[stats['count'] >= 2, 'mean'].idxmin()
-a3 = (df.stars <= 2).sum()
-a4 = a3 / len(df)
+    a1 = stats['mean']
+    a2 = stats.loc[stats['count'] >= 2, 'mean'].idxmin()
+    a3 = (df.stars <= 2).sum()
+    a4 = a3 / len(df)
 
-print(a1, a2, a3, a4, sep='\n')
+    print(a1, a2, a3, a4, sep='\n')
+
 # product
 # кабель      1.0
 # колонка     4.0
